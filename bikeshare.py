@@ -6,9 +6,9 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
-    
+
 def get_filters():
-    
+
     """
     Asks user to specify a city, month, and day to analyze.
 
@@ -18,7 +18,7 @@ def get_filters():
         (str) day - name of the day of week to filter by, or "all" to apply no day filter
     """
     print('Hello! Let\'s explore some US bikeshare data!')
-    
+
     # TO DO: get user input for city (chicago, new york city, washington). HINT: Use a while loop to handle invalid inputs
     while True:
         try:
@@ -30,21 +30,21 @@ def get_filters():
                 print('Wrong input! please choose one of these options: Chicago, New York city, or Washington.')
         except ValueError as ve:
             print('Error Input, please try again!')
-            continue 
-    
+            continue
+
     # get user input for month (all, january, february, ... , june)
-   
+
     while True:
         try:
             month= input('Which month - all, january, february, march, april, may, or june? ')
             if month.lower() in ['all', 'january', 'february', 'march', 'april', 'may', 'june']:
                 month=month.lower()
-                break;    
+                break;
             else:
                 print('Wrong input! please choose one of these options: all, January, February, March, April, May, June.')
         except ValueError:
             print(' Error Input, please try again!')
-            continue 
+            continue
 
     # get user input for day of week (all, monday, tuesday, ... sunday)
     while True:
@@ -85,14 +85,14 @@ def load_data(city, month, day):
     df['month'] = df['Start Time'].dt.month
     df['day_of_week'] = df['Start Time'].dt.weekday_name
     df['hour'] = df['Start Time'].dt.hour
-    
-    
+
+
 # filter by month if applicable
     if month != 'all':
         # use the index of the months list to get the corresponding int
         months = ['january', 'february', 'march', 'april', 'may', 'june']
         month = months.index(month)+1
-    
+
         # filter by month to create the new dataframe
         df = df[df['month']==month]
 
@@ -181,52 +181,53 @@ def user_stats(df,city):
         print('Sorry, there are no gender and year of birth data for Washington city!')
     else:
         gender_counts = df['Gender'].value_counts()
-    
+
         print('counts based on gender: ',gender_counts)
-    
+
 
     # TO DO: Display earliest, most recent, and most common year of birth
         common_birth_year = df['Birth Year'].mode()[0]
         earliest_year = df['Birth Year'].min()
         recent_year = df['Birth Year'].max()
-    
-    
+
+
         print('The most common year of birth is ',common_birth_year)
         print('The most earliest year of birth is ', earliest_year)
         print('The most recent year of birth is ', recent_year)
-        
-        
+
+
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
 
+def display_raw_data(df):
 
     """ Here we ask the user if he\she wants to display raw data or not, the program will continue to display 5 raws till the user type 'no' """
-    
+
     raw_data = input('Would you like to display some raw data? yes or no? ')
-    
-    
+
+
     if raw_data.lower() == 'yes':
         count = 0
         while True:
             print(df.iloc[count: count+5])
             count += 5
             for_more = input('Would you like to display 5 more raw data? yes or no? ')
-           
+
             if for_more.lower() != 'yes':
                 break
-            
+
 
 def main():
     while True:
         city, month, day = get_filters()
-        
+
         df = load_data(city, month, day)
 
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
         user_stats(df,city)
-        
+        display_raw_data(df)
 
         restart = input('\nWould you like to restart? Enter yes or no.\n')
         if restart.lower() != 'yes':
