@@ -8,7 +8,7 @@ Replace the Project Title
 
 ### Description
 Describe what your project is about and what it does
-I used data from 3 different files and each file include data for specific city in USA which contain data about the people who use the bikeshare application. After completing the bikeshare.py and run it successfully, I uploaded it on the forked repo in my Github account. 
+I used data from 3 different files and each file include data for specific city in USA which contain data about the people who use the bikeshare application. After completing the bikeshare.py and run it successfully, I uploaded it on the forked repo in my Github account after make some changes in some of the project's files.
 ### Files used
 Include the files used
 chicago.csv
