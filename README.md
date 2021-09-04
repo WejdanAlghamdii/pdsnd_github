@@ -14,6 +14,8 @@ Include the files used
 chicago.csv
 new_york_city.csv
 washington.csv
+Udacity workspace
+Google doc: Git Commands Documentation
 ### Credits
 It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-I used for bikeshare project the workspace in Udacity website. 
+I used for bikeshare project the workspace in Udacity website.
