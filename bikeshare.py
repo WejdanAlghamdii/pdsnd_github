@@ -216,6 +216,8 @@ def display_raw_data(df):
             if for_more.lower() != 'yes':
                 break
 
+     print("\nThis took %s seconds." % (time.time() - start_time))
+     print('-'*40)
 
 def main():
     while True:
